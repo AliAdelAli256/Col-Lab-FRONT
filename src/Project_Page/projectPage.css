@@ -60,3 +60,14 @@
   background-color:rgb(108, 117, 125);
   overflow: hidden;
 }
+
+.modal-backdrop
+{
+    opacity:0.5 !important;
+}
+
+.modal-title-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

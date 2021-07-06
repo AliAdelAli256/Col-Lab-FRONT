@@ -275,7 +275,6 @@ function SideBarConent() {
 }
 */
 function Home() {
-
   return (
     <div style={{ zIndex: 1 }}>
       <Container className="text-left mt-5 pt-5">
@@ -391,59 +390,52 @@ function CodeReview() {
 
   const [reviewcomments, setReviewComments] = useState([]);
 
-  const handleRemoveItem = item => {
+  const handleDeleteReview = item => {
     let copiedReview = [...reviewcomments];
     copiedReview = copiedReview.filter((val) => val !== item);
     setReviewComments(copiedReview);
   }
 
   function addReview() {
-    //var li = document.createElement("li");
     var inputValue = document.getElementById("review").value;
-    setReviewComments([...reviewcomments, inputValue]);
-    document.getElementById("review").value = "";
-    /*
-    var t = document.createTextNode(inputValue);
-    li.appendChild(t);
     if (inputValue === '') {
       alert("You must write something!");
     } else {
-      document.getElementById("myList").appendChild(li);
+      setReviewComments([inputValue, ...reviewcomments]);
     }
-    
-    var removeBtn = document.createElement('button');
-    removeBtn.innerHTML = "Delete";
-    removeBtn.className = "Delete_Btn";
-    li.appendChild(removeBtn);
-    var remove = document.getElementsByClassName("Delete_Btn");
-    for (var i = 0; i < remove.length; i++) {
-      remove[i].onclick = function () {
-        var div = this.parentElement;
-        div.style.display = "none";
-      }
-    }
-    */
+    document.getElementById("review").value = "";
   }
 
   return (
     <div>
-      <div className="container mt-3" align="center" style={{ borderRadius: "5px" }}>
-        <div className="mb-3" style={{ fontSize: "30px", fontWeight: "600" }}>Project Review</div>
-        <div class="form-outline w-50 mb-4">
+      <div className="code-review container mt-3" align="center" style={{ borderRadius: "5px"}}>
+        <div className="mb-3" style={{ fontSize: "35px", fontWeight: "600" }}>Code File Review</div>
+        <label style={{ fontSize: "18px", fontWeight: "600" }}>Choose a file</label>
+        <div className="d-flex row justify-content-center">
+        <div className="form-group">
+          <select className="form-control" id="fileSelected" style={{ width: "15rem" , boxShadow: "0px 0px 2px 2px rgb(211, 209, 209)" }}>
+            <option hidden selected>Select file...</option>
+            <option value="1">index.html</option>
+            <option value="2">style.css</option>
+            <option value="3">app.js</option>
+          </select>
+        </div>
+    </div>
+        <div class="form-outline w-50 mb-4" style={{margin: "40px"}}>
           <textarea id="review" class="form-control" placeholder="Add your comments" rows="5"></textarea>
         </div>
-        <Button className="m-3" variant="secondary" onClick={addReview}>
+        <Button className="mb-5" variant="secondary" onClick={addReview}>
           Add Review
     </Button>
 
         {
-          reviewcomments.map(val => <Card className="comment-card" style={{width: "50rem"}}>
+          reviewcomments.map(val => <Card className="comment-card bg-light" style={{width: "45rem"}}>
             <Card.Body className="comment-card-body">
               <Card.Title>
                 <CardHeaderContainer>
                   <img style={{borderRadius: "50px"}} alt="profile pic" width="50px" height="50px" src="https://lh3.googleusercontent.com/a-/AOh14GiQu5YIfLWdOBR42GmmOcNLk3jB3pV1rtt7foy77A=s288-p-rw-no" />
                   <strong className="comment-user-name">Ali Adel</strong>
-                  <Button type="button" className="btn btn-secondary btn-sm w-15 ml-auto" onClick={() => handleRemoveItem(val)}><i class="fas fa-times fa-lg"></i></Button>
+                  <Button type="button" className="btn btn-secondary btn-sm w-15 ml-auto" onClick={() => handleDeleteReview(val)}><i class="fas fa-times fa-lg"></i></Button>
                 </CardHeaderContainer>
               </Card.Title>
               <Card.Text>
@@ -460,92 +452,71 @@ function CodeReview() {
 
 function CreateProject() {
 
+  const [membersNames, setMembersNames] = useState(["Ahmed Hatem", "Ahmed Safwat", "Ali Adel", "Abdullah Baher", "Ahmed Salama", "Mohammed Hatem", "Mohammed Amr", "Salah Mustafa", "Omar Khaled", "Shehab Khaled", "Beshoy Victor", "Youssef Wael"]);
   const [List, setList] = useState([]);
 
-  const handleRemoveItem = item => {
+  const handleRemoveMember = item => {
     let copiedList = [...List];
     copiedList = copiedList.filter((val) => val !== item);
     setList(copiedList);
+    let copiedMembers = [...membersNames, item];
+    setMembersNames(copiedMembers);
   }
 
   function addMember() {
-    // var li = document.createElement("list-item");
     var inputValue = document.getElementById("member").value;
-    setList([...List, inputValue]);
+    if (inputValue === '') {
+      alert("You must select at least one member.");
+    } else {
+      setList([...List, inputValue]);
+      let copiedMembers = [...membersNames];
+      copiedMembers = copiedMembers.filter((val) => val !== inputValue);
+      setMembersNames(copiedMembers);
+    }
     document.getElementById("member").value = "";
-    /*
-      var t = document.createTextNode(inputValue);
-      li.appendChild(t);
-      if (inputValue === '') {
-        alert("You must select at least one member.");
-      } else {
-        document.getElementById("myList").appendChild(li);
-      }
-      document.getElementById("member").value = "";
-      var removeBtn = document.createElement('button')
-      removeBtn.innerHTML = "<i class='fas fa-times'></i>"
-      removeBtn.className = "Remove"
-      li.appendChild(removeBtn)
-      var remove = document.getElementsByClassName("Remove");
-      for (var i = 0; i < remove.length; i++) {
-        remove[i].onclick = function () {
-          var div = this.parentElement;
-          div.style.display = "none";
-        }
-      }*/
   }
 
   return (
     <div>
-      <div className="container mt-3 bg-light" align="center" style={{ borderRadius: "5px" }}>
-        <div className="mb-3" style={{ fontSize: "30px", fontWeight: "600" }}>Create New Project</div>
+      <div className="container mt-4 bg-light" align="center"  style={{ borderRadius: "5px" }}>
+        <div className="mb-3" style={{ fontSize: "35px", fontWeight: "600" }}>Create New Project</div>
         <div className="form-group ml-3" >
-          <label style={{ fontWeight: '600' }}>Project name</label>
+          <label style={{ fontWeight: '600' , marginRight: "14.5rem" }}>Project name</label>
           <input type="text" className="form-control" placeholder="Name your project" style={{ width: "30%", justifyContent: "center" }}></input>
         </div>
 
         <div className="form-group">
-          <label className="ml-3" for="languageSelected" style={{ fontWeight: '600' }}>Select language</label>
+          <label className="ml-3" for="languageSelected" style={{ fontWeight: '600', marginRight: "13.5rem" }}>Select language</label>
           <select className="form-control ml-3" id="languageSelected" style={{ width: "30%" }}>
-            <option>Languages</option>
-            <option>C++</option>
+            <option hidden selected>Languages</option>
             <option>JavaScript</option>
             <option>Python</option>
           </select>
         </div>
 
         <div>
-          <label className="ml-3" for="member" style={{ fontWeight: '600' }}>Add member/s</label>
+          <label className="ml-3" for="member" style={{ fontWeight: '600', marginRight: "13.8rem" }}>Add member/s</label>
           <br></br>
           <input className="ml-3" list="members" name="member" id="member" style={{ height: "38px", width: "30%", borderRadius: "5px", border: "1px solid #ced4da", paddingLeft: "15px" }}></input>
           <datalist id="members">
-            <option>Ahmed Hatem</option>
-            <option>Mohamed Hatem</option>
-            <option>Abdullah Baher</option>
-            <option>Salah Mustafa</option>
-            <option>Ahmed Salama</option>
-            <option>Shehab Khaled</option>
-            <option>Omar Khaled</option>
-            <option>Ahmed Safwat</option>
-            <option>Youssef Wael</option>
-            <option>Mohammed Amr</option>
-            <option>Ali Adel</option>
-            <option>Beshoy Victor</option>
+            {
+              membersNames.map(name => <option> {name} </option>)
+            }
           </datalist>
 
           <br></br>
 
-          <Button className="m-3" variant="secondary" onClick={addMember}>
+          <Button className="m-3 ml-4" variant="secondary" onClick={addMember}>
             Add Member
     </Button>
 
-          <ListGroup id="myList">
+          <ListGroup id="myList" className="align-items-center">
             {
               List.map((val) => {
-                return <ListGroup.Item>
+                return <ListGroup.Item className="fade w-50" style={{borderRadius: "5px"}}>
                   <div className="d-flex row" style={{ alignItems: "baseline" }}>
                     <h5>{val}</h5>
-                    <Button className="bg-secondary ml-auto border-0" size="sm" onClick={() => handleRemoveItem(val)}><i class='fas fa-times'></i></Button>
+                    <Button className="bg-secondary ml-auto border-0" size="sm" style={{borderRadius: "50%"}} onClick={() => handleRemoveMember(val)}><i class='fas fa-times'></i></Button>
                   </div>
                 </ListGroup.Item>
               })
