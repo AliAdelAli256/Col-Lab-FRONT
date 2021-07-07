@@ -5,7 +5,7 @@ import { Button, Form } from "react-bootstrap";
 class SignUp extends Component {
   render() {
     return (
-      <Form className="p-5">
+      <Form className="p-5 bg-light">
         <Form.Group controlId="formBasicEmail">
           <Form.Label> Name </Form.Label>
           <Form.Control

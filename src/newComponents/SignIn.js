@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 class SignIn extends Component {
   render() {
     return (
-      <Form className="p-5">
+      <Form className="p-5 bg-light">
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control

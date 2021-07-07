@@ -3,7 +3,6 @@ import { Container, Button, Row, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { SiJavascript, SiNodeDotJs } from "react-icons/si";
 import { BsPlusSquare } from "react-icons/bs";
-//import Container from "react-bootstrap/Container";
 
 class Home extends Component {
   render() {
@@ -35,10 +34,10 @@ class Home extends Component {
                   <Card.Title className="text-center">
                     Instagram Clone App
                   </Card.Title>
-                  <Card.Subtitle className="mb-2 text-center">
+                  {/* <Card.Subtitle className="mb-2 text-center">
                     <SiJavascript className="mb-1 mr-1" />
                     <SiNodeDotJs className="mb-1 mr-1" />
-                  </Card.Subtitle>
+                  </Card.Subtitle> */}
                   <Link to="/default/ide">
                     <Card.Link>Go To Project</Card.Link>
                   </Link>

@@ -23,7 +23,7 @@ class Main extends Component {
           className="bg-light shadow-sm justify-content-center"
           variant="light"
         >
-          <NavbarBrand href="#"> Col - Lab </NavbarBrand>
+          <NavbarBrand href="#"> Col-Lab </NavbarBrand>
         </Navbar>
         <Container className="pt-3 mt-5 ">
           <TabContainer defaultActiveKey="signup">
@@ -33,13 +33,13 @@ class Main extends Component {
                 sm={8}
                 lg={6}
                 className="rounded-3 shadow-sm bg-light"
-                bg="dark"
+                //bg="dark"
               >
                 <Container>
                   <Nav
                     fill
                     variant="pills"
-                    className="p-5"
+                    className="p-5 bg-light"
                     defaultActiveKey="/signup"
                   >
                     <NavItem>
@@ -47,7 +47,7 @@ class Main extends Component {
                         className="shadow-sm rounded-0 mr-1"
                         eventKey="signup"
                       >
-                        SignUp
+                        Sign Up
                       </NavLink>
                     </NavItem>
                     <NavItem>
@@ -55,7 +55,7 @@ class Main extends Component {
                         className="shadow-sm rounded-0 ml-1"
                         eventKey="signin"
                       >
-                        SignIn
+                        Sign In
                       </NavLink>
                     </NavItem>
                   </Nav>

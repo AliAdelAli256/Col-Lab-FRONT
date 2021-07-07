@@ -2,15 +2,17 @@ import React, { Component } from "react";
 import ReactTooltip from "react-tooltip";
 import { Link, withRouter } from "react-router-dom";
 import { SiRhinoceros } from "react-icons/si";
+import Aux from "../hoc/Auxiliary";
 
-const ya3 = "/default/ide";
+const inIDE = "/default/ide";
 
 class SideBar extends Component {
   state = {
     shoudlRedirect: false,
   };
+
   componentDidMount() {
-    if (this.props.history.location.pathname != ya3) {
+    if (this.props.history.location.pathname != inIDE) {
       this.setState({ shoudlRedirect: true });
     } else {
       this.setState({ shoudlRedirect: false });
@@ -18,11 +20,32 @@ class SideBar extends Component {
   }
 
   newRedirect = () => {
-    this.props.history.push(ya3);
+    this.props.history.push(inIDE);
   };
 
-
   render() {
+    const showRun = this.props.showRun ? (
+      <Aux>
+        <button
+          data-tip
+          data-for="run"
+          type="button"
+          className="btn btn-secondary mb-1 "
+          style={{ maxHeight: "40px", width: "40px", borderRadius: "5px" }}
+        >
+          <i class="fas fa-play"></i>
+        </button>
+        <ReactTooltip
+          id="run"
+          place="right"
+          effect="solid"
+          backgroundColor="white"
+          textColor="black"
+        >
+          Run Code
+        </ReactTooltip>
+      </Aux>
+    ) : null;
     return (
       <div
         class="btn-group-vertical justify-content-start bg-secondary"
@@ -43,7 +66,7 @@ class SideBar extends Component {
           style={{
             maxHeight: "40px",
             width: "40px",
-            borderRadius: "5px" /*, boxShadow : '0px 0px 3px 3px gray'*/,
+            borderRadius: "5px",
           }}
         >
           <i class="fas fa-copy"></i>
@@ -143,6 +166,7 @@ class SideBar extends Component {
             Tasks
           </ReactTooltip>
         </Link>
+        {showRun}
       </div>
     );
   }

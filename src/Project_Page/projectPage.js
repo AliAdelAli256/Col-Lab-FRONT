@@ -102,7 +102,7 @@ function Ide(props) {
 
   return (
     <div className="flex-row">
-      <SideBar handleDrawer={handleDrawer} />
+      <SideBar handleDrawer={handleDrawer} showRun={true}/>
 
       <Drawer
         className={classes.drawer}

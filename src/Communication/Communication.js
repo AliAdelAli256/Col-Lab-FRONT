@@ -14,7 +14,7 @@ import CallIcon from "@material-ui/icons/Call";
 import CallEndIcon from "@material-ui/icons/CallEnd";
 import SideBar from "../newComponents/SideBar";
 
-const role = prompt("Please enter your role", "");
+const role = 0; //prompt("Please enter your role", "");
 
 class Communication extends React.Component {
   constructor() {
