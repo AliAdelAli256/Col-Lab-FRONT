@@ -6,6 +6,8 @@ import CreateProject from "./CreateProject";
 import Profile from "./Profile";
 import CodeReview from "./CodeReview";
 import Home from "./Home";
+import TasksContextState from "../TasksContext/TasksContextState";
+import Communication from "../Communication/Communication";
 
 class Default extends Component {
   render() {
@@ -15,8 +17,13 @@ class Default extends Component {
         <Route path="/default/code-review" component={CodeReview} />
         <Route path="/default/profile" component={Profile} />
         <Route path="/default/create-project" component={CreateProject} />
+        <Route path="/default/communication" component={Communication} />
         <Route path="/default/ide" component={Ide} />
-        <Route path="/default/tasks" component={TrelloPage} />
+        <Route path="/default/tasks">
+          <TasksContextState>
+            <TrelloPage />
+          </TasksContextState>
+        </Route>
       </Switch>
     );
   }

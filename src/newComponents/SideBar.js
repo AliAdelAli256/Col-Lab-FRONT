@@ -1,8 +1,27 @@
 import React, { Component } from "react";
 import ReactTooltip from "react-tooltip";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import { SiRhinoceros } from "react-icons/si";
+
+const ya3 = "/default/ide";
 
 class SideBar extends Component {
+  state = {
+    shoudlRedirect: false,
+  };
+  componentDidMount() {
+    if (this.props.history.location.pathname != ya3) {
+      this.setState({ shoudlRedirect: true });
+    } else {
+      this.setState({ shoudlRedirect: false });
+    }
+  }
+
+  newRedirect = () => {
+    this.props.history.push(ya3);
+  };
+
+
   render() {
     return (
       <div
@@ -13,7 +32,11 @@ class SideBar extends Component {
       >
         <button
           data-tip
-          onClick={this.props.handleDrawer}
+          onClick={
+            this.state.shoudlRedirect
+              ? this.newRedirect
+              : this.props.handleDrawer
+          }
           data-for="fileSystem"
           type="button"
           className="btn btn-secondary mb-1"
@@ -37,7 +60,7 @@ class SideBar extends Component {
 
         <Link
           to={{
-            pathname: "/default/ide",
+            pathname: "/default/communication",
           }}
         >
           <button
@@ -125,4 +148,4 @@ class SideBar extends Component {
   }
 }
 
-export default SideBar;
+export default withRouter(SideBar);

@@ -14,6 +14,8 @@ import SideBar from "../newComponents/SideBar";
 
 const drawerWidth = 180;
 
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 240,
@@ -29,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     left: "42.8px",
     top: "60px",
     overflow: "hidden",
-    height: "101%",
+    height: "100%",
   },
 }));
 
